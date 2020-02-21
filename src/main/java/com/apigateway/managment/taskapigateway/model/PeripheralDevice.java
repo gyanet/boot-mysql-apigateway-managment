@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @Builder
 @Entity
-@Table(name = "peripherals")
+@Table(name = "peripheral")
 public class PeripheralDevice {
 
     @Id
@@ -38,7 +38,7 @@ public class PeripheralDevice {
     private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gateway_id")
+    @JoinColumn(name = "gateway_id", nullable = false)
     @EqualsAndHashCode.Exclude
     private Gateway gateway;
 }
