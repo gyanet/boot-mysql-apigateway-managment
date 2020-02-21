@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @Builder
 @Entity
-@Table(name = "peripheral")
+@Table(name = "peripherals")
 public class PeripheralDevice {
 
     @Id
