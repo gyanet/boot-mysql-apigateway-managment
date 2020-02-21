@@ -5,6 +5,8 @@ import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.error.ex.PeripheralDeviceException;
 import com.apigateway.managment.taskapigateway.service.implementation.PeripheralDeviceService;
 import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "Devices Gateway Management", description = "Update or remove devices from a gateway")
 public class ApiPeripheralController {
 
-    @Autowired
-    private PeripheralDeviceService peripheralDeviceService;
+    @Autowired private PeripheralDeviceService peripheralDeviceService;
+    Logger logger = LoggerFactory.getLogger(ApiPeripheralController.class);
 
     @ApiOperation(value = "Add a device to gateway")
     @ApiResponses(value = {
