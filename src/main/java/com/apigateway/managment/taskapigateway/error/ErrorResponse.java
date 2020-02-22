@@ -15,7 +15,7 @@ import java.util.Date;
 public class ErrorResponse {
     private ResponseType type;
     private String message;
-    private String uri;
+    private String path;
     private Date date = new Date();
 
 }
