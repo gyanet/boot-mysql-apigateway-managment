@@ -34,13 +34,13 @@ public class DeviceHelper {
         }
     }
 
-    public void addPeripheralDeviceToGateway(PeripheralDevice peripheralDevice, Gateway gatewayFound) {
+   /* public void addPeripheralDeviceToGateway(PeripheralDevice peripheralDevice, Gateway gatewayFound) {
         Set<PeripheralDevice> deviceSet = new HashSet<>();
         peripheralDevice.setGateway(gatewayFound);
         deviceSet.add(peripheralDevice);
 
         gatewayFound.getPeripheralDevices().addAll(deviceSet);
-    }
+    }*/
 
     /*public PeripheralDeviceDTO convertEntityToDTO(PeripheralDevice device) throws PeripheralDeviceException {
         try {
@@ -48,14 +48,13 @@ public class DeviceHelper {
                     .id(device.getId())
                     .uid(device.getUid())
                     .vendor(device.getVendor())
-                    .gatewaySerialNumber(device.getGateway().getSerialNumber())
                     .dateCreated(device.getDateCreated())
                     .build();
         } catch (Exception e) {
             throw new PeripheralDeviceException(String.format("An error occurred trying to convert peripheral device to transfer object: %s", e.getMessage()));
         }
 
-    }*/
+    } */
 
     /*public PeripheralDevice convertDTOtoEntity(PeripheralDeviceDTO deviceDTO) throws PeripheralDeviceException {
         try {

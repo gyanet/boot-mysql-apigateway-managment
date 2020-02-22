@@ -29,28 +29,28 @@ public class ApiPeripheralController {
             @ApiResponse(code = 404, message = "Gateway not found"),
             @ApiResponse(code = 500, message = "Error updating gateways detail")
     })
-    @PutMapping(path = "/update/{id}")
+    @PostMapping(path = "/{id}")
     public ResponseEntity<GatewayDTO> addDeviceToGateway(
             @ApiParam(value = "Json with device to be added to gateway", required = true) @RequestBody PeripheralDeviceDTO peripheralDeviceDto,
             @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable Long idGateway) throws PeripheralDeviceException {
 
-            return new ResponseEntity<>(peripheralDeviceService.addDeviceToGateway(peripheralDeviceDto, idGateway), HttpStatus.OK);
+            return new ResponseEntity<>(peripheralDeviceService.addPeripheralDeviceToGateway(peripheralDeviceDto, idGateway), HttpStatus.OK);
     }
 
-   /* @ApiOperation(value = "Delete a device from a gateway.")
-    @ApiResponses(value = {
+   @ApiOperation(value = "Delete a device from a gateway.")
+   @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Device updated"),
             @ApiResponse(code = 404, message = "Device not found"),
             @ApiResponse(code = 500, message = "Error deleting a device from gateway")
     })
-    @DeleteMapping(path = "/delete/{idGateway}/{idPeripheral}")
+    @DeleteMapping(path = "/{idGateway}/{idPeripheral}")
     public ResponseEntity<PeripheralDeviceDTO> deleteDeviceFromGateway(
             @ApiParam(value = "Json with device to be deleted", required = true) @RequestBody PeripheralDeviceDTO peripheralDeviceDto,
             @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable Long idGateway,
             @ApiParam(value = "Device id that will be delete", required = true) @PathVariable Long idPeripheral) throws PeripheralDeviceNotFoundException {
 
-            return new ResponseEntity<PeripheralDeviceDTO>(peripheralDeviceService.deleteOneFromGateway(idGateway, idPeripheral), HttpStatus.OK);
+            return new ResponseEntity<PeripheralDeviceDTO>(peripheralDeviceService.deletePeripheralDeviceFromGateway(idGateway, idPeripheral), HttpStatus.OK);
 
-    }*/
+    }
 
 }

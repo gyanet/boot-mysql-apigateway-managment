@@ -1,5 +1,8 @@
 package com.apigateway.managment.taskapigateway.error;
 
+import com.apigateway.managment.taskapigateway.dto.ResponseDTO;
+import com.apigateway.managment.taskapigateway.error.ex.GatewayNotFoundException;
+import com.apigateway.managment.taskapigateway.utils.ResponseType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -10,11 +13,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
 
-//@ControllerAdvice
+@ControllerAdvice
 class ErrorHandlingInterceptor extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(GatewayNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public @ResponseBody ResponseDTO handleResourceNotFound(final GatewayNotFoundException exception,
+                                       final HttpServletRequest request) {
+
+        ResponseDTO error = new ResponseDTO();
+        error.setMessage(exception.getMessage());
+        error.setUri(request.getRequestURI());
+        error.setType(ResponseType.ERROR);
+        error.setDate(new Date());
+
+        return error;
+    }
 
     /*@ExceptionHandler(CustomException.class)
     public final ResponseEntity<Object> handleAllExceptions(CustomException ex) {

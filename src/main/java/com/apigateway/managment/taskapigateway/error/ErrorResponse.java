@@ -1,19 +1,21 @@
 package com.apigateway.managment.taskapigateway.error;
 
+import com.apigateway.managment.taskapigateway.utils.ResponseType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.java.Log;
 
-@NoArgsConstructor
+import java.util.Date;
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
-@Log
-public class Violation {
-
-    private String fieldName;
+public class ErrorResponse {
+    private ResponseType type;
     private String message;
+    private String uri;
+    private Date date = new Date();
 
 }
