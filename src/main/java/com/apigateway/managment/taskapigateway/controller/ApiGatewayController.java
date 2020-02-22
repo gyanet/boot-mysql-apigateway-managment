@@ -1,7 +1,6 @@
 package com.apigateway.managment.taskapigateway.controller;
 
 import com.apigateway.managment.taskapigateway.dto.GatewayDTO;
-import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.dto.ResponseDTO;
 import com.apigateway.managment.taskapigateway.error.ex.*;
 import com.apigateway.managment.taskapigateway.model.Gateway;

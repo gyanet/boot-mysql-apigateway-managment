@@ -1,6 +1,5 @@
 package com.apigateway.managment.taskapigateway.error;
 
-import com.apigateway.managment.taskapigateway.error.ex.CustomException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -14,10 +13,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-@ControllerAdvice
+//@ControllerAdvice
 class ErrorHandlingInterceptor extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(CustomException.class)
+    /*@ExceptionHandler(CustomException.class)
     public final ResponseEntity<Object> handleAllExceptions(CustomException ex) {
         CustomExceptionSchema exceptionResponse =
                 new CustomExceptionSchema(
@@ -49,6 +48,6 @@ class ErrorHandlingInterceptor extends ResponseEntityExceptionHandler {
                     new Violation(fieldError.getField(), fieldError.getDefaultMessage()));
         }
         return error;
-    }
+    }*/
 
 }
