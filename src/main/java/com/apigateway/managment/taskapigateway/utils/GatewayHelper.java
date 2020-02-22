@@ -54,6 +54,11 @@ public class GatewayHelper {
         });
     }
 
+    public void savePeripheralDeviceToGateway(PeripheralDevice device, Gateway gateway) {
+        device.setGateway(gateway);
+        deviceRepository.save(device);
+    }
+
     public void deletePeripheralDeviceFromGateway(Long deviceId) throws GatewayNotFoundException {
         deviceRepository.deleteById(deviceId);
     }

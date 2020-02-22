@@ -3,6 +3,7 @@ package com.apigateway.managment.taskapigateway.controller;
 import com.apigateway.managment.taskapigateway.dto.GatewayDTO;
 import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.error.ex.PeripheralDeviceException;
+import com.apigateway.managment.taskapigateway.error.ex.PeripheralDeviceNotFoundException;
 import com.apigateway.managment.taskapigateway.service.implementation.PeripheralDeviceService;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Description(value = "")
-@RequestMapping(path = "/api/gateway")
+@RequestMapping(path = "/api/gateway/peripheral")
 @Api(value = "Devices Gateway Management", description = "Update or remove devices from a gateway")
 public class ApiPeripheralController {
 
@@ -31,34 +32,25 @@ public class ApiPeripheralController {
     @PutMapping(path = "/update/{id}")
     public ResponseEntity<GatewayDTO> addDeviceToGateway(
             @ApiParam(value = "Json with device to be added to gateway", required = true) @RequestBody PeripheralDeviceDTO peripheralDeviceDto,
-            @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable String id) throws PeripheralDeviceException {
-        try {
-            long idGateway = Long.parseLong(id);
-            GatewayDTO gatewayDto = peripheralDeviceService.addOneToGateway(peripheralDeviceDto, idGateway);
-            return new ResponseEntity<>(gatewayDto, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+            @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable Long idGateway) throws PeripheralDeviceException {
+
+            return new ResponseEntity<>(peripheralDeviceService.addDeviceToGateway(peripheralDeviceDto, idGateway), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Delete a device from a gateway.")
+   /* @ApiOperation(value = "Delete a device from a gateway.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Device updated"),
             @ApiResponse(code = 404, message = "Device not found"),
             @ApiResponse(code = 500, message = "Error deleting a device from gateway")
     })
     @DeleteMapping(path = "/delete/{idGateway}/{idPeripheral}")
-    public ResponseEntity<PeripheralDeviceDTO> deleteGatewayDevice(
+    public ResponseEntity<PeripheralDeviceDTO> deleteDeviceFromGateway(
             @ApiParam(value = "Json with device to be deleted", required = true) @RequestBody PeripheralDeviceDTO peripheralDeviceDto,
-            @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable String idGateway,
-            @ApiParam(value = "Device id that will be delete", required = true) @PathVariable String idPeripheral) {
-        try {
-            long gatewayId = Long.parseLong(idGateway);
-            long peripheralId = Long.parseLong(idPeripheral);
-            return new ResponseEntity<PeripheralDeviceDTO>(peripheralDeviceService.deleteOneFromGateway(peripheralDeviceDto, gatewayId, peripheralId), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+            @ApiParam(value = "Gateway id that will be updated", required = true) @PathVariable Long idGateway,
+            @ApiParam(value = "Device id that will be delete", required = true) @PathVariable Long idPeripheral) throws PeripheralDeviceNotFoundException {
+
+            return new ResponseEntity<PeripheralDeviceDTO>(peripheralDeviceService.deleteOneFromGateway(idGateway, idPeripheral), HttpStatus.OK);
+
+    }*/
 
 }
