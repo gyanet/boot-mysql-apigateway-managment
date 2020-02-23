@@ -1,4 +1,4 @@
 package com.apigateway.managment.taskapigateway.error;
 
-public abstract class SubError {
+public abstract class ApiSubError {
 }
