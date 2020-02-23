@@ -38,7 +38,7 @@ public class PeripheralDevice {
     private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gateway_id", nullable = false)
+    @JoinColumn(name = "gateway_id")
     @EqualsAndHashCode.Exclude
     private Gateway gateway;
 }

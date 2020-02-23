@@ -1,7 +1,6 @@
 package com.apigateway.managment.taskapigateway.error;
 
 import com.apigateway.managment.taskapigateway.error.ex.GatewayException;
-import com.apigateway.managment.taskapigateway.error.ex.GatewayNotFoundException;
 import com.apigateway.managment.taskapigateway.utils.ResponseType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
