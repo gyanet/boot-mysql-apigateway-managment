@@ -20,7 +20,7 @@ public class GatewayHelper {
     @Autowired private GatewayRepository gatewayRepository;
     Logger logger = LoggerFactory.getLogger(GatewayService.class);
 
-    public Gateway getyById(long idGateway) throws GatewayNotFoundException {
+    public Gateway getById(long idGateway) throws GatewayNotFoundException {
         return gatewayRepository.findById(idGateway)
                 .orElseThrow(() -> new GatewayNotFoundException(String.format("There is no gateway with id %s", idGateway)));
     }
