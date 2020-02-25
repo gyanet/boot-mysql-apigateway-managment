@@ -1,0 +1,116 @@
+{
+	"id": "718f8bc8-6ff1-4eaa-959f-1ec39cdadd6c",
+	"name": "task-gateway",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"44a17a64-74e0-4c38-a982-0dfe710319f5",
+		"4761d927-f54f-407e-b089-c0453d4a64e8",
+		"a4d7673f-4afb-482c-b2de-d4ab7ebfe33f",
+		"af438789-fb90-4e1b-bf3b-e871605bd77f",
+		"1b8d96bd-3ce4-4b18-be9f-c9ae2f83154d"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "1b8d96bd-3ce4-4b18-be9f-c9ae2f83154d",
+			"name": "add-device-to-gateway",
+			"url": "http://localhost:8080/api/gateway/1/peripheral",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"uid\": 9683,\n    \"vendor\": \"Soylent Corp\",\n    \"status\": \"ONLINE\"\n}\n        ",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "44a17a64-74e0-4c38-a982-0dfe710319f5",
+			"name": "get-all-gateways",
+			"url": "http://localhost:8080/api/gateway",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "4761d927-f54f-407e-b089-c0453d4a64e8",
+			"name": "save-gateway",
+			"url": "http://localhost:8080/api/gateway",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"serialNumber\": \"AKSJUALKI901HBGWUH9\",\n    \"name\": \"pos-10-0.7tir.sepanta.net\",\n    \"ipAddress\": \"34.212.22.228\",\n    \"peripheralDevices\": [\n        {\n            \"uid\": 9653,\n            \"vendor\": \"Soylent Corp\",\n            \"dateCreated\": \"2020-02-01\",\n            \"status\": \"ONLINE\"\n        }\n    ]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a4d7673f-4afb-482c-b2de-d4ab7ebfe33f",
+			"name": "get-gateway-by-id",
+			"url": "http://localhost:8080/api/gateway/1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "af438789-fb90-4e1b-bf3b-e871605bd77f",
+			"name": "delete-device-from-gateway",
+			"url": "http://localhost:8080/api/gateway/1/peripheral/1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
