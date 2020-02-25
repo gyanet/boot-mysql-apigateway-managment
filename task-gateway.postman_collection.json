@@ -28,7 +28,7 @@
 					"value": "application/json"
 				}
 			],
-			"method": "POST",
+			"method": "PUT",
 			"pathVariableData": [],
 			"queryParams": [],
 			"auth": null,

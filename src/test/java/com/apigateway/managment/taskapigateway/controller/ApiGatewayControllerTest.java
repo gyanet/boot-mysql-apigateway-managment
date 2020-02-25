@@ -193,7 +193,7 @@ public class ApiGatewayControllerTest extends AbstractTest implements TestConsta
     public void addPeripheralDeviceToGateway() throws Exception {
         String inputJson = super.mapToJson(deviceDTO).replaceAll("%","\"");
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders
-                .post(API_GATEWAY_URI + "/" + GATEWAY_ID + "/peripheral")
+                .put(API_GATEWAY_URI + "/" + GATEWAY_ID + "/peripheral")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(inputJson)
                 .accept(MediaType.APPLICATION_JSON))

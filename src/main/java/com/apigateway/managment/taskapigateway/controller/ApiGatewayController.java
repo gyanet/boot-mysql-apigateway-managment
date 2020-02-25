@@ -98,7 +98,7 @@ public class ApiGatewayController {
             @ApiResponse(code = 201, message = "Peripheral device added successfully."),
             @ApiResponse(code = 500, message = "An error occur adding peripheral device."),
     })
-    @PostMapping(path = "/{idGateway}/peripheral", consumes = "application/json", produces = "application/json")
+    @PutMapping(path = "/{idGateway}/peripheral", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<ResponseDTO> addPeripheralDeviceToGateway(@ApiParam(value = "Gateway id.", required = true) @PathVariable("idGateway") Long gatewayId,
                                                                     @ApiParam(value = "Json with peripheral device data.", required = true) @RequestBody PeripheralDeviceDTO deviceDTO) throws GatewayException, PeripheralDeviceException, GatewayNotFoundException {
