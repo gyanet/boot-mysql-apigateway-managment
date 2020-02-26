@@ -64,4 +64,5 @@ public class PeripheralDeviceService implements IPeripheralDeviceService {
             throw new PeripheralDeviceException(String.format("An error occurred trying to convert peripheral device transfer object to entity with id %s : %s",deviceDTO.getId() ,ex.getMessage()));
         }
     }
+
 }

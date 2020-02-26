@@ -56,10 +56,10 @@
   
   In this collection are the functionalities of:
   
-  Functionality | Method | Parameters | Parameter type | Description
-  --- | --- | --- | --- | --- |
-  /{id}| GET  | id         |PathVariable|Get detail of gateway
-  -    | GET  | -          | -          | Get all gateways
-  -    | POST | GatewayDto | Body       | Add a gateway
+Functionality | Method | Parameters | Parameter type | Description
+  ---                                | ---    | ---                 | ---          | ---                    |
+  /{id}                              | GET    | id                  | PathVariable |Get detail of gateway
+  -                                  | GET    | -                   | -            | Get all gateways
+  -                                  | POST   | GatewayDto          | Body         | Add a gateway
   /{idGateway}/peripheral/{idDevice} |  POST  | idGateway, idDevice | PathVariable | Add device to gateway
   /{idGateway}/peripheral            | DELETE | idGateway           | PathVariable |Delete device to gateway
