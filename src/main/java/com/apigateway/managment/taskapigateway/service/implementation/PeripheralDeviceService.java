@@ -1,5 +1,7 @@
 package com.apigateway.managment.taskapigateway.service.implementation;
 
+import com.apigateway.managment.taskapigateway.annotations.BusinessService;
+import com.apigateway.managment.taskapigateway.annotations.MethodInfo;
 import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.error.ex.GatewayException;
 import com.apigateway.managment.taskapigateway.error.ex.GatewayNotFoundException;
@@ -18,7 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-@Service
+@BusinessService
 public class PeripheralDeviceService implements IPeripheralDeviceService {
     @Autowired private GatewayService gatewayService;
     @Autowired private ModelMapper modelMapper;
@@ -27,6 +29,7 @@ public class PeripheralDeviceService implements IPeripheralDeviceService {
 
     Logger logger = LoggerFactory.getLogger(PeripheralDeviceService.class);
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public PeripheralDevice findById(Long idPeripheral) throws PeripheralDeviceNotFoundException, PeripheralDeviceException {
         logger.info("[PeripheralDeviceService] - findById {} " + idPeripheral);
         try {
@@ -40,6 +43,7 @@ public class PeripheralDeviceService implements IPeripheralDeviceService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public void addPeripheralDeviceToGateway(PeripheralDeviceDTO peripheralDevice, long idGateway) throws GatewayNotFoundException, PeripheralDeviceException, GatewayException {
         logger.info("[GatewayService] - savePeripheralDeviceToGateway {} " + "gatewayId: " + idGateway + " device: " + peripheralDevice.getUid());
         Gateway gateway = gatewayService.findById(idGateway);
@@ -49,6 +53,7 @@ public class PeripheralDeviceService implements IPeripheralDeviceService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public void deletePeripheralDeviceFromGateway(Long deviceId, long idGateway) throws GatewayNotFoundException, PeripheralDeviceNotFoundException, PeripheralDeviceException, GatewayException {
         logger.info("[GatewayService] - deletePeripheralDeviceFromGateway {} " + "device: " + deviceId);
         Gateway gateway = gatewayService.findById(idGateway);
@@ -57,6 +62,7 @@ public class PeripheralDeviceService implements IPeripheralDeviceService {
         gatewayRepository.save(gateway);
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public PeripheralDevice convertDTOtoEntity(PeripheralDeviceDTO deviceDTO) throws PeripheralDeviceException {
         try {
             return modelMapper.map(deviceDTO, PeripheralDevice.class);
