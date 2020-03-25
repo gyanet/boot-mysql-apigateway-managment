@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,8 +25,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @AutoConfigureMockMvc
 @WebAppConfiguration
-@ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
+@TestPropertySource("/application.properties")
 @SpringBootTest(classes = TaskApigatewayApplication.class)
 @SqlGroup({
         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:seed.sql"),

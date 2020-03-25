@@ -19,5 +19,6 @@ public interface TestConstants {
     public static final String DEVICE_STATUS          = "ONLINE";
     public static final String DEVICE_STATUS_OFFLINE  = "OFFLINE";
     public static final String API_GATEWAY_URI        = "/api/gateway";
+    public static final String THERE_IS_NO_GATEWAY_WITH_ID = "There is no gateway with id ";
 
 }
