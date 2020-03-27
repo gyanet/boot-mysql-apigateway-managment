@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Description;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.Locale;
 
 @RestController
@@ -29,10 +28,21 @@ public class PeripheralDeviceInheritanceTestController implements IPeripheralDev
         return peripheralDeviceInheritanceTestService.findInById(idPeripheral);
     }
 
-    @GetMapping(path = "/locale/{lang}", produces = "application/json")
-    public String getLocaleMessage(@PathVariable("lang") String lang) throws Exception {
-        LocaleContextHolder.setLocale(Locale.forLanguageTag(lang));
-        return messageSource.getMessage("label.welcome",null, LocaleContextHolder.getLocale());
+    @GetMapping(path = "/locale/{tag}", produces = "application/json")
+    public String getLocaleMessage(@PathVariable("tag") String tag) throws Exception {
+        LocaleContextHolder.setLocale(Locale.forLanguageTag(tag));
+        String[] params = new String[]{"Giselle Yanet"};
+        return getLocale(params);
+    }
+
+    private String getLocale(String[] params) {
+        return messageSource.getMessage("label.welcome", params, LocaleContextHolder.getLocale());
+    }
+
+    @GetMapping(path = "/locale", produces = "application/json")
+    public String getLocaleMessage() throws Exception {
+        String[] params = new String[]{"Giselle Yanet"};
+        return getLocale(params);
     }
 
     @PostMapping(path = "", produces = "application/json")
