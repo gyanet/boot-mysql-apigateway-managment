@@ -10,14 +10,14 @@ import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 import java.util.Date;
 
-/*@JsonTypeInfo(
+@JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         visible = true,
         property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = PeripheralDeviceInDTO.class, name = "IN"),
         @JsonSubTypes.Type(value = PeripheralDeviceOutDTO.class, name = "OUT")
-})*/
+})
 @NoArgsConstructor
 @Data
 public abstract class PeripheralDeviceBaseDTO implements Serializable {
@@ -29,16 +29,18 @@ public abstract class PeripheralDeviceBaseDTO implements Serializable {
     protected String vendor;
     protected Date dateCreated;
     protected String status;
+    protected EPeripheralDevice type;
 
-    public PeripheralDeviceBaseDTO(Long id, Long uid, String vendor, Date dateCreated, String status) {
+    public PeripheralDeviceBaseDTO(Long id, Long uid, String vendor, Date dateCreated, String status, EPeripheralDevice type) {
         this.id = id;
         this.uid = uid;
         this.vendor = vendor;
         this.dateCreated = dateCreated;
         this.status = status;
+        this.type = type;
     }
 
-    public PeripheralDeviceBaseDTO(Long uid, String vendor, Date dateCreated, String status) {
+    public PeripheralDeviceBaseDTO(Long uid, String vendor, Date dateCreated, String status, EPeripheralDevice type) {
         this.uid = uid;
         this.vendor = vendor;
         this.dateCreated = dateCreated;

@@ -1,5 +1,6 @@
 package com.apigateway.managment.taskapigateway.dto;
 
+import com.apigateway.managment.taskapigateway.model.EPeripheralDevice;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Builder;
 import lombok.Data;
@@ -11,16 +12,15 @@ import org.slf4j.Logger;
 import java.beans.ConstructorProperties;
 import java.util.Date;
 
-@Data
 @Value
-//@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class PeripheralDeviceOutDTO extends PeripheralDeviceBaseDTO {
     private String ownOutField;
 
-    @ConstructorProperties({"id","uid","vendor","dateCreated","status","ownOutField"})
+    @ConstructorProperties({"id","uid","vendor","dateCreated","status","ownOutField","type"})
     @Builder(toBuilder = true, builderMethodName = "builderFromPeripheralDeviceOutDTO")
-    public PeripheralDeviceOutDTO(Long id, Long uid, String vendor, Date dateCreated, String status, String ownOutField) {
-        super(id, uid, vendor, dateCreated, status);
+    public PeripheralDeviceOutDTO(Long id, Long uid, String vendor, Date dateCreated, String status, String ownOutField, EPeripheralDevice type) {
+        super(id, uid, vendor, dateCreated, status, type);
         this.ownOutField = ownOutField;
     }
 
