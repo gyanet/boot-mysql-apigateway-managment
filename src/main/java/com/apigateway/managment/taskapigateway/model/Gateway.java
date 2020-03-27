@@ -9,7 +9,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "newInstance")
 @Entity
 @Table(name = "gateways" ,uniqueConstraints = @UniqueConstraint(columnNames={"serial_number", "ip_address"}))
 public class Gateway {

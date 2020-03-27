@@ -1,5 +1,7 @@
 package com.apigateway.managment.taskapigateway.dto;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

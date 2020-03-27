@@ -3,6 +3,7 @@ package com.apigateway.managment.taskapigateway.service.implementation;
 import com.apigateway.managment.taskapigateway.TestConstants;
 import com.apigateway.managment.taskapigateway.dto.GatewayDTO;
 import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
+import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceInDTO;
 import com.apigateway.managment.taskapigateway.error.ex.GatewayException;
 import com.apigateway.managment.taskapigateway.error.ex.GatewayNotFoundException;
 import com.apigateway.managment.taskapigateway.error.ex.PeripheralDeviceException;
@@ -54,7 +55,7 @@ public class PeripheralDeviceServiceTest implements TestConstants {
     @Before
     public void setUp() throws Exception {
 
-        gateway = Gateway.builder()
+        gateway = Gateway.newInstance()
                 .id(GATEWAY_ID)
                 .serialNumber(GATEWAY_SERIAL_NUMBER)
                 .name(GATEWAY_NAME)
@@ -70,7 +71,7 @@ public class PeripheralDeviceServiceTest implements TestConstants {
                 .peripheralDevices(deviceDTOList)
                 .build();
 
-        peripheralDevice = PeripheralDevice.builder()
+        peripheralDevice = PeripheralDevice.newInstance()
                 .id(DEVICE_ID)
                 .uid(DEVICE_UID)
                 .vendor(DEVICE_VENDOR)
@@ -86,7 +87,7 @@ public class PeripheralDeviceServiceTest implements TestConstants {
                 .dateCreated(new Date())
                 .build();
 
-        peripheralDevice2 = PeripheralDevice.builder()
+        peripheralDevice2 = PeripheralDevice.newInstance()
                 .id(DEVICE_ID + 1)
                 .uid(Long.parseLong("9655"))
                 .vendor(DEVICE_VENDOR)
