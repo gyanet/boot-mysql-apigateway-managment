@@ -28,6 +28,23 @@ public class PeripheralDeviceInheritanceTestController implements IPeripheralDev
         return peripheralDeviceInheritanceTestService.findInById(idPeripheral);
     }
 
+    @GetMapping(path = "/out/{id}", produces = "application/json")
+    public PeripheralDeviceOutDTO findOutById(@PathVariable("id")Long idPeripheral) throws Exception {
+        return peripheralDeviceInheritanceTestService.findOutById(idPeripheral);
+    }
+
+    @PostMapping(path = "", produces = "application/json")
+    @ResponseBody
+    public PeripheralDeviceInDTO testDeviceAsInParameter(@RequestBody PeripheralDeviceInDTO peripheralDeviceInDTO) throws Exception {
+        return peripheralDeviceInheritanceTestService.testDeviceAsInParameter(peripheralDeviceInDTO);
+    }
+
+    @PostMapping(path = "/out", produces = "application/json")
+    @ResponseBody
+    public PeripheralDeviceOutDTO testDeviceOutAsInParameter(@RequestBody PeripheralDeviceOutDTO peripheralDeviceOutDTO) throws Exception {
+        return peripheralDeviceInheritanceTestService.testDeviceOutAsInParameter(peripheralDeviceOutDTO);
+    }
+
     @GetMapping(path = "/locale/{tag}", produces = "application/json")
     public String getLocaleMessage(@PathVariable("tag") String tag) throws Exception {
         LocaleContextHolder.setLocale(Locale.forLanguageTag(tag));
@@ -43,16 +60,5 @@ public class PeripheralDeviceInheritanceTestController implements IPeripheralDev
     public String getLocaleMessage() throws Exception {
         String[] params = new String[]{"Giselle Yanet"};
         return getLocale(params);
-    }
-
-    @PostMapping(path = "", produces = "application/json")
-    @ResponseBody
-    public PeripheralDeviceInDTO testDeviceAsInParameter(@RequestBody PeripheralDeviceInDTO peripheralDeviceInDTO) throws Exception {
-        return peripheralDeviceInheritanceTestService.testDeviceAsInParameter(peripheralDeviceInDTO);
-    }
-
-    @GetMapping(path = "/out/{id}", produces = "application/json")
-    public PeripheralDeviceOutDTO findOutById(@PathVariable("id")Long idPeripheral) throws Exception {
-        return peripheralDeviceInheritanceTestService.findOutById(idPeripheral);
     }
 }

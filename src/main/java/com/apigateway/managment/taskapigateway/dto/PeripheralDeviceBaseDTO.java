@@ -3,9 +3,9 @@ package com.apigateway.managment.taskapigateway.dto;
 import com.apigateway.managment.taskapigateway.model.EPeripheralDevice;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,6 +19,7 @@ import java.util.Date;
         @JsonSubTypes.Type(value = PeripheralDeviceOutDTO.class, name = "OUT")
 })
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public abstract class PeripheralDeviceBaseDTO implements Serializable {
 
@@ -31,20 +32,12 @@ public abstract class PeripheralDeviceBaseDTO implements Serializable {
     protected String status;
     protected EPeripheralDevice type;
 
-    public PeripheralDeviceBaseDTO(Long id, Long uid, String vendor, Date dateCreated, String status, EPeripheralDevice type) {
-        this.id = id;
+    /*public PeripheralDeviceBaseDTO(Long uid, String vendor, Date dateCreated, String status) {
         this.uid = uid;
         this.vendor = vendor;
         this.dateCreated = dateCreated;
         this.status = status;
-        this.type = type;
-    }
-
-    public PeripheralDeviceBaseDTO(Long uid, String vendor, Date dateCreated, String status, EPeripheralDevice type) {
-        this.uid = uid;
-        this.vendor = vendor;
-        this.dateCreated = dateCreated;
-        this.status = status;
-    }
+//        this.type = type;
+    }*/
 
 }

@@ -28,6 +28,12 @@ public class PeripheralDeviceInheritanceTestService implements IPeripheralDevice
         return peripheralDeviceInDTO;
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "Test PeripheralDeviceInDTO as parameter", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
+    public PeripheralDeviceOutDTO testDeviceOutAsInParameter(PeripheralDeviceOutDTO peripheralDeviceOutDTO) throws Exception {
+        logger.info(peripheralDeviceOutDTO.toString());
+        return peripheralDeviceOutDTO;
+    }
+
     @Override
     @MethodInfo(author = "Giselle Yanet",comments = "Test inheritance with Lombok PeripheralDeviceOutDTO", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public PeripheralDeviceOutDTO findOutById(Long idPeripheral) throws Exception {

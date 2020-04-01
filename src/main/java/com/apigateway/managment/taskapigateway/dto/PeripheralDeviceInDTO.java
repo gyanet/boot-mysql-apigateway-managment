@@ -1,9 +1,8 @@
 package com.apigateway.managment.taskapigateway.dto;
 
 import com.apigateway.managment.taskapigateway.model.EPeripheralDevice;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Builder;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
@@ -12,6 +11,7 @@ import java.util.Date;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@JsonDeserialize(builder = PeripheralDeviceInDTO.PeripheralDeviceInDTOBuilder.class)
 public class PeripheralDeviceInDTO extends PeripheralDeviceBaseDTO {
     private String ownInField;
 
