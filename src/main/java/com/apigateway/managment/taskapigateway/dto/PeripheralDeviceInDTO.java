@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
-@JsonDeserialize(builder = PeripheralDeviceInDTO.PeripheralDeviceInDTOBuilder.class)
+//@JsonDeserialize(builder = PeripheralDeviceInDTO.PeripheralDeviceInDTOBuilder.class)
 public class PeripheralDeviceInDTO extends PeripheralDeviceBaseDTO {
     private String ownInField;
 
