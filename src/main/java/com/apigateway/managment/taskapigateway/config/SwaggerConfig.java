@@ -11,6 +11,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
@@ -19,6 +22,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 public class SwaggerConfig {
 
     public static final Contact DEFAULT_CONTACT = new Contact("Giselle Yanet", "http://www.soaint.com", "giselle.designe@gmail.com");
+    private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(Arrays.asList("application/json","appication/xml"));
 
     @Bean
     public Docket productApi() {
@@ -27,7 +31,9 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.apigateway.managment.taskapigateway.controller"))
                 .paths(regex("/api.*"))
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .produces(DEFAULT_PRODUCES_AND_CONSUMES)
+                .consumes(DEFAULT_PRODUCES_AND_CONSUMES);
     }
 
     private ApiInfo apiInfo() {
