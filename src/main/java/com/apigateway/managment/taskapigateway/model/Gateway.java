@@ -1,5 +1,7 @@
 package com.apigateway.managment.taskapigateway.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "newInstance")
 @Entity
 @Table(name = "gateways" ,uniqueConstraints = @UniqueConstraint(columnNames={"serial_number", "ip_address"}))
 public class Gateway {

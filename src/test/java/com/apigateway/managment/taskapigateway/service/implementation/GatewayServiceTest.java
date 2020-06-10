@@ -62,7 +62,7 @@ public class GatewayServiceTest implements TestConstants {
 
         deviceDTOList.add(pd1);
 
-        gateway = Gateway.builder()
+        gateway = Gateway.newInstance()
                 .id(GATEWAY_ID)
                 .name(GATEWAY_NAME)
                 .serialNumber(GATEWAY_SERIAL_NUMBER)
@@ -78,7 +78,7 @@ public class GatewayServiceTest implements TestConstants {
                 .peripheralDevices(deviceDTOList)
                 .build();
 
-        peripheralDevice = PeripheralDevice.builder()
+        peripheralDevice = PeripheralDevice.newInstance()
                 .id(DEVICE_ID)
                 .uid(pd1.getUid())
                 .vendor(DEVICE_VENDOR)

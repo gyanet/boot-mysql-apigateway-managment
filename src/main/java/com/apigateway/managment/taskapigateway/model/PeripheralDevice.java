@@ -1,6 +1,7 @@
 package com.apigateway.managment.taskapigateway.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,12 +9,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@Builder(builderMethodName = "newInstance")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 @Entity
 @Table(name = "peripherals")
+/*@NamedQueries(
+        @NamedQuery(name = "PeripheralDevice.findByVendor", query = "SELECT NEW com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO " +
+                "(p.id, p.uid, p.tiempoRespuesta, p.vendor, p.dateCreated, p.status) " +
+                "FROM peripherals p WHERE p.vendor = TRIM(:VENDOR)")
+)*/
 public class PeripheralDevice {
 
     @Id

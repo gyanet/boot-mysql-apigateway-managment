@@ -35,7 +35,7 @@ public class GatewayValidatorTest implements TestConstants {
     @Before
     public void setUp() throws Exception {
 
-        gateway = Gateway.builder()
+        gateway = Gateway.newInstance()
                 .id(GATEWAY_ID)
                 .serialNumber(GATEWAY_SERIAL_NUMBER)
                 .name(GATEWAY_NAME)
@@ -75,7 +75,7 @@ public class GatewayValidatorTest implements TestConstants {
         try {
             int i = 0;
             do {
-                deviceSet.add(PeripheralDevice.builder().vendor(DEVICE_VENDOR + i).build());
+                deviceSet.add(PeripheralDevice.newInstance().vendor(DEVICE_VENDOR + i).build());
                 i++;
             } while (i<11);
             validator.validateGatewayDevicesNumber(deviceSet);

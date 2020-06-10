@@ -1,5 +1,6 @@
 package com.apigateway.managment.taskapigateway.controller;
 
+import com.apigateway.managment.taskapigateway.annotations.LogExecutionTime;
 import com.apigateway.managment.taskapigateway.dto.GatewayDTO;
 import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.dto.ResponseDTO;
@@ -53,6 +54,7 @@ public class ApiGatewayController {
     })
     @GetMapping()
     @ResponseBody
+    @LogExecutionTime
     public ResponseEntity<List<GatewayDTO>> getAllGateways() throws GatewayException {
         logger.info("[ApiGatewayController] - getAllGateways {}");
             return new ResponseEntity<>(gatewayService.getAll(),HttpStatus.OK);

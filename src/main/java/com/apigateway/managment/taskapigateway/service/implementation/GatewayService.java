@@ -1,5 +1,7 @@
 package com.apigateway.managment.taskapigateway.service.implementation;
 
+import com.apigateway.managment.taskapigateway.annotations.BusinessService;
+import com.apigateway.managment.taskapigateway.annotations.MethodInfo;
 import com.apigateway.managment.taskapigateway.dto.GatewayDTO;
 import com.apigateway.managment.taskapigateway.dto.PeripheralDeviceDTO;
 import com.apigateway.managment.taskapigateway.dto.ResponseDTO;
@@ -15,7 +17,6 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ValidationException;
@@ -25,7 +26,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Transactional
-@Service
+@BusinessService
 public class GatewayService implements IGatewayService {
     @Autowired private PeripheralDeviceService deviceService;
     @Autowired private GatewayValidator validator;
@@ -36,6 +37,7 @@ public class GatewayService implements IGatewayService {
     Logger logger = LoggerFactory.getLogger(GatewayService.class);
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public Gateway findById(Long idGateway) throws GatewayNotFoundException {
         logger.info("[GatewayService] - findById {} " + "idGateway: " + idGateway);
         try {
@@ -46,6 +48,7 @@ public class GatewayService implements IGatewayService {
         }
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public GatewayDTO getById(Long idGateway) throws GatewayException, GatewayNotFoundException {
         logger.info("[GatewayService] - findById {} " + "idGateway: " + idGateway);
         try {
@@ -58,6 +61,7 @@ public class GatewayService implements IGatewayService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public List<GatewayDTO> getAll() throws GatewayException {
         logger.info("[GatewayService] - getAll {}");
         try {
@@ -68,6 +72,7 @@ public class GatewayService implements IGatewayService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public Gateway add(GatewayDTO gatewayDTO) throws GatewayException, GatewayDataValidationException {
         logger.info("[GatewayService] - add {} " + "idGateway: " + gatewayDTO.getSerialNumber());
         try {
@@ -82,6 +87,7 @@ public class GatewayService implements IGatewayService {
         }
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public Gateway savePeripheralDevicesAfterCreateGateway(Gateway gateway) throws GatewayException {
         logger.info("[GatewayService] - savePeripheralDevicesAfterCreateGateway {} " + "idGateway: " + gateway.getSerialNumber());
         try {
@@ -101,6 +107,7 @@ public class GatewayService implements IGatewayService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public ResponseDTO deletePeripheralDeviceFromGateway(Long deviceId, Long gatewayId) throws GatewayException, GatewayNotFoundException, PeripheralDeviceNotFoundException {
         logger.info("[GatewayService] - deletePeripheralDeviceFromGateway {} " + "deviceId: " + deviceId);
         try {
@@ -116,6 +123,7 @@ public class GatewayService implements IGatewayService {
     }
 
     @Override
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public ResponseDTO addPeripheralDeviceToGateway(PeripheralDeviceDTO deviceDTO, Long gatewayId) throws GatewayException, GatewayNotFoundException, PeripheralDeviceException {
         logger.info("[GatewayService] - addPeripheralDeviceToGateway {} " + "gatewayId: " + gatewayId + "deviceDTO: " + deviceDTO.getUid());
         try {
@@ -132,20 +140,22 @@ public class GatewayService implements IGatewayService {
         }
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public GatewayDTO convertEntityToDTO(Gateway gateway) {
         return modelMapper.map(gateway, GatewayDTO.class);
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public Gateway convertDTOtoEntity(GatewayDTO gatewayDTO) {
         return modelMapper.map(gatewayDTO, Gateway.class);
     }
 
+    @MethodInfo(author = "Giselle Yanet",comments = "", date = "25 March 2020", expireDate = "26 March 2020", revision = 1)
     public List<GatewayDTO> convertEntityListToDTO(List<Gateway> gateways) {
         logger.info("[GatewayService] - convertEntityListToDTO {} " + "gateways: " + gateways.size());
         return gateways.stream()
                 .map(gateway -> convertEntityToDTO(gateway))
                 .collect(Collectors.toList());
     }
-
 
 }

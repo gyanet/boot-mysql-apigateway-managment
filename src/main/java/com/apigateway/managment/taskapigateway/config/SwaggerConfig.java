@@ -4,15 +4,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    public static final Contact DEFAULT_CONTACT = new Contact("Giselle Yanet", "http://www.soaint.com", "giselle.designe@gmail.com");
+    private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(Arrays.asList("application/json","appication/xml"));
+
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -20,7 +31,9 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.apigateway.managment.taskapigateway.controller"))
                 .paths(regex("/api.*"))
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .produces(DEFAULT_PRODUCES_AND_CONSUMES)
+                .consumes(DEFAULT_PRODUCES_AND_CONSUMES);
     }
 
     private ApiInfo apiInfo() {
@@ -29,9 +42,10 @@ public class SwaggerConfig {
                 "Sample project for managing gateways - masterdevices that control multiple peripheral devices.",
                 "API v1.0",
                 "Terms of service",
-                "giselle.designe@gmail.com",
-                "License of API",
-                "API license URL");
+                DEFAULT_CONTACT,
+                "Apache 2.0",
+                "http://www.apache.org/licenses/LICENSE-2.0");
+
         return apiInfo;
     }
 }
